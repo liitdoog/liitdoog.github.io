@@ -1,0 +1,293 @@
+/* 首屏 Hero */
+.hero {
+  height: min(72vh, 560px);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.heroOverlay {
+  width: 100%;
+  padding: 48px max(16px, calc((100vw - 1000px) / 2));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+  color: #fff;
+}
+
+.heroKicker {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.heroTitle {
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.heroSub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 24px;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.heroGhost {
+  color: #fff;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+}
+
+.heroGhost:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 摄影师名片 */
+.profileCard {
+  display: flex;
+  align-items: center;
+  margin-top: -42px;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profileMain {
+  flex: 1;
+  margin-left: 16px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: baseline;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.city {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 10px;
+}
+
+.title {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.callBtn {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 7px 18px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.callBtn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* 数据统计 */
+.statsRow {
+  display: flex;
+  text-align: center;
+}
+
+.stat {
+  flex: 1;
+}
+
+.statNum {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.statUnit {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* 关于我 */
+.bio {
+  color: #444;
+  margin-bottom: 14px;
+}
+
+.honor {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* 精选作品 */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.featuredItem {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.featuredItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.featuredItem:hover img {
+  transform: scale(1.05);
+}
+
+.featuredCaption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: #fff;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.moreWorks {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.moreWorks a:hover {
+  color: var(--accent);
+}
+
+.mutualTip {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+/* 服务套餐 */
+.pkgGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.pkg {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.pkg:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.pkgName {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pkgDuration {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.pkgPrice {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 10px 0 6px;
+}
+
+.pkgUnit {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.pkgDesc {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.pkgBtn {
+  margin-top: 14px;
+  text-align: center;
+  background: var(--text);
+  color: #fff;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 8px 0;
+  transition: opacity 0.2s;
+}
+
+.pkgBtn:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 760px) {
+  .pkgGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .featuredGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profileCard {
+    flex-wrap: wrap;
+  }
+
+  .callBtn {
+    margin-top: 12px;
+    width: 100%;
+    text-align: center;
+  }
+}

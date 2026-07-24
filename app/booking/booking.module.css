@@ -1,0 +1,175 @@
+/* 预约联系卡 */
+.contactCard {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.contactTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contactSub {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.contactActions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.wechatBtn {
+  background: var(--text);
+  color: #fff;
+  font-size: 15px;
+  border-radius: 999px;
+  padding: 13px 28px;
+  transition: opacity 0.2s;
+}
+
+.wechatBtn:hover {
+  opacity: 0.85;
+}
+
+.phoneBtn {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 15px;
+  border-radius: 999px;
+  padding: 12px 28px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.phoneBtn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* 预约流程 */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.step {
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 12px;
+}
+
+.stepIcon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.stepTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stepDesc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* 服务套餐 */
+.pkgGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.pkg {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.pkg:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.pkgName {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pkgDuration {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.pkgPrice {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 10px 0 6px;
+}
+
+.pkgUnit {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.pkgDesc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.slotsTip {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* 互勉须知 */
+.rules {
+  list-style: none;
+}
+
+.rules li {
+  position: relative;
+  padding: 10px 0 10px 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.rules li:last-child {
+  border-bottom: none;
+}
+
+.rules li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.rulesTip {
+  margin-top: 14px;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .pkgGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
