@@ -4,12 +4,11 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const featured = works.filter((w) => w.featured);
-  const hero = featured[2] || featured[0]; // 用横图做首屏背景
 
   return (
     <div>
       {/* 首屏 Hero */}
-      <section className={styles.hero} style={{ backgroundImage: `url(${hero.url})` }}>
+      <section className={styles.hero} style={{ backgroundImage: `url(${photographer.heroImage})` }}>
         <div className={styles.heroOverlay}>
           <p className={styles.heroKicker}>TFP · 互勉约拍</p>
           <h1 className={styles.heroTitle}>

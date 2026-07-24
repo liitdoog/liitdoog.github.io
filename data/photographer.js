@@ -6,6 +6,7 @@ export const photographer = {
   name: "可卡鱼",
   title: "新手摄影师 · 互勉约拍进行中",
   avatar: "/images/avatar.jpg",
+  heroImage: "/images/works/封面.jpg",
   city: "杭州",
   phone: "15868631770",
   wechatId: "pxw15868631770",
