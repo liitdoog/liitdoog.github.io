@@ -19,7 +19,7 @@ export const photographer = {
     { value: "200", unit: "+", label: "交付精修" },
   ],
   specialties: ["日系人像", "胶片感", "街拍", "校园写真"],
-  gears: ["📷 尼康 Z50Ⅱ", "🔭 56mm F1.4 🔭 56mm F1.4", "🔭 16-50mm 🔭 50-250mm "],
+  gears: ["📷 尼康 Z50Ⅱ", "🔭 56mm F1.4 🔭 23mm F1.4", "🔭 16-50mm 🔭 50-250mm "],
 };
 
 // 互勉主题（招募中）
