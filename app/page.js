@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { photographer, plans, works } from "@/data/photographer";
+import { photographer, plans } from "@/data/photographer";
+import { getFeatured } from "@/data/works";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const featured = works.filter((w) => w.featured);
+  // 首页精选 = 作品/精选/ 文件夹里的照片
+  const featured = getFeatured();
 
   return (
     <div>
@@ -78,24 +80,26 @@ export default function Home() {
           ))}
         </section>
 
-        {/* 练习作品 */}
-        <section className="card">
-          <h2 className="section-title">练习作品</h2>
-          <div className={styles.featuredGrid}>
-            {featured.map((w) => (
-              <Link href="/works" key={w.id} className={styles.featuredItem}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={w.url} alt={w.title} loading="lazy" />
-                <span className={styles.featuredCaption}>
-                  {w.title} · {w.category}
-                </span>
-              </Link>
-            ))}
-          </div>
-          <div className={styles.moreWorks}>
-            <Link href="/works">查看全部作品 →</Link>
-          </div>
-        </section>
+        {/* 练习作品：作品/精选/ 里没有照片时整块不显示 */}
+        {featured.length > 0 && (
+          <section className="card">
+            <h2 className="section-title">练习作品</h2>
+            <div className={styles.featuredGrid}>
+              {featured.map((w) => (
+                <Link href="/works" key={w.id} className={styles.featuredItem}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={w.url} alt={w.title} loading="lazy" />
+                  <span className={styles.featuredCaption}>
+                    {w.title} · {w.category}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className={styles.moreWorks}>
+              <Link href="/works">查看全部作品 →</Link>
+            </div>
+          </section>
+        )}
 
         {/* 互勉招募 */}
         <section className="card">

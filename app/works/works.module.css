@@ -60,7 +60,10 @@
 }
 
 .work img {
+  display: block;
   width: 100%;
+  /* 配合 <img> 上的 width/height 属性，让浏览器提前算出高度，加载时不跳版 */
+  height: auto;
 }
 
 .workMeta {

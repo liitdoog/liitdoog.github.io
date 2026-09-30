@@ -1,12 +1,14 @@
-// 摄影师资料与作品数据 —— 改内容只需要动这个文件
-// 提示：图片目前使用 picsum.photos 占位图，正式上线前请替换为自己的作品
-// （放到 public/images/ 下，url 改成 /images/xxx.jpg 即可）
+// 摄影师资料 —— 改文案只要动这个文件
+//
+// 作品不在这里。作品照片放进项目根目录的「作品/<标签>/」文件夹即可，
+// 网站会自动扫描生成作品列表，详见 作品/README.md。
 
 export const photographer = {
   name: "可卡鱼",
   title: "新手摄影师 · 互勉约拍进行中",
   avatar: "/images/avatar.jpg",
-  heroImage: "/images/works/封面.jpg",
+  // 首屏大图，直接放 public/images/ 下，建议 1920×1080 以内、500KB 以下
+  heroImage: "/images/封面.jpg",
   city: "杭州",
   phone: "15868631770",
   wechatId: "pxw15868631770",
@@ -59,26 +61,6 @@ export const rules = [
   "成片默认双方都可用于个人展示（介意请提前沟通）",
   "妆造、服装需自备，如涉及场地费用 AA",
   "请守时，临时有事请至少提前一天告知，🕊️ 勿扰",
-];
-
-export const categories = ["全部", "日系", "街拍", "夜景", "日常"];
-
-// category 取值与 categories 中一致（不含“全部”）
-export const works = [
-  { id: 1, category: "日系", title: "窗边", url: "https://picsum.photos/seed/portrait1/600/800", featured: true },
-  { id: 2, category: "街拍", title: "午后街角", url: "https://picsum.photos/seed/street1/600/750", featured: true },
-  { id: 3, category: "夜景", title: "天台灯光", url: "https://picsum.photos/seed/night1/1200/700", featured: true },
-  { id: 4, category: "日系", title: "逆光", url: "https://picsum.photos/seed/portrait2/600/900" },
-  { id: 5, category: "日常", title: "巷口早餐铺", url: "https://picsum.photos/seed/doc1/600/450" },
-  { id: 6, category: "街拍", title: "第一眼", url: "https://picsum.photos/seed/street2/600/800" },
-  { id: 7, category: "夜景", title: "江边晚风", url: "https://picsum.photos/seed/night2/600/400" },
-  { id: 8, category: "日系", title: "少年", url: "https://picsum.photos/seed/portrait3/600/750" },
-  { id: 9, category: "日常", title: "爷爷的棋盘", url: "https://picsum.photos/seed/doc2/600/600" },
-  { id: 10, category: "街拍", title: "梧桐树下", url: "https://picsum.photos/seed/street3/600/900" },
-  { id: 11, category: "夜景", title: "山间星轨", url: "https://picsum.photos/seed/night3/600/450" },
-  { id: 12, category: "日系", title: "舞者", url: "https://picsum.photos/seed/portrait4/600/800" },
-  { id: 13, category: "日常", title: "放学路上", url: "https://picsum.photos/seed/doc3/600/700" },
-  { id: 14, category: "街拍", title: "拥抱", url: "https://picsum.photos/seed/street4/600/800" },
 ];
 
 export const timeSlots = [

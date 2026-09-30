@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# 作品照片的压缩产物，由 scripts/sync-works.mjs 自动生成
+# 源文件是根目录的 作品/ 文件夹（那个要提交，别忽略）
+/public/作品/
+
 # production
 /build
 
