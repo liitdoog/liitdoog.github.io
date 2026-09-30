@@ -103,9 +103,11 @@ async function main() {
   say("  [1/4] 代理正常");
 
   // ---- 2. 有没有改动 ----
-  // core.quotepath=false：让 git 直接输出中文路径，而不是 \344\275\234 这种转义
-  const status = git(["-c", "core.quotepath=false", "status", "--porcelain"]).trim();
-  if (!status) {
+  // core.quotepath=false：让 git 直接输出中文路径，而不是 \344\275\234 这种转义。
+  // 注意别对整段输出 trim()：每行开头那个空格正是 porcelain 的「暂存位」。
+  const status = git(["-c", "core.quotepath=false", "status", "--porcelain"]);
+  const changed = status.split("\n").filter((l) => l.trim() !== "");
+  if (changed.length === 0) {
     say("");
     say("  [!] 没有任何改动，不需要推送。");
     say("      照片要先放进 作品\\ 里面对应的文件夹哦。");
@@ -114,11 +116,10 @@ async function main() {
     process.exit(0);
   }
 
-  const changed = status.split("\n");
   const photos = changed.filter((l) => /\.(jpe?g|png|webp|avif|tiff?|heic|heif)$/i.test(l));
   say(`  [2/4] 发现 ${changed.length} 处改动${photos.length ? `（其中 ${photos.length} 张照片）` : ""}`);
   for (const l of changed.slice(0, 8)) {
-    say(`        ${l.slice(0, 3).trim() || "?"}  ${l.slice(3)}`);
+    say(`        ${l.slice(0, 2).trim() || "?"}  ${l.slice(3)}`);
   }
   if (changed.length > 8) say(`        …还有 ${changed.length - 8} 处`);
 
