@@ -40,11 +40,19 @@ npm run dev
 ## 部署到 GitHub Pages
 
 推送到 `main` 分支后由 GitHub Actions 自动构建发布（见 [.github/workflows/deploy.yml](.github/workflows/deploy.yml)），
-正常更新只要 commit + push，**不需要手动 build 或上传**：
+正常更新只要 commit + push，**不需要手动 build 或上传**。
+
+最省事的方式：**双击 [更新网站.bat](更新网站.bat)**，它会检查代理、打包、上传，一步到位。
+逻辑在 [scripts/push.mjs](scripts/push.mjs)，命令行等价写法是 `npm run push`。
+
+手动敲命令也一样：
 
 ```bash
 git add -A && git commit -m "更新" && git push
 ```
+
+> 推送要走代理（`127.0.0.1:7890`），代理没开会连不上 GitHub。
+> 换端口的话设环境变量 `WS_PROXY_PORT`。
 
 一分钟左右自动上线：<https://liitdoog.github.io/>
 

@@ -16,8 +16,9 @@ import os from "node:os";
 import path from "node:path";
 import readline from "node:readline";
 
-const PROXY_HOST = "127.0.0.1";
-const PROXY_PORT = 7890;
+// 代理端口，默认 7890（Clash 常用端口）。换端口时可以设环境变量 WS_PROXY_PORT。
+const PROXY_HOST = process.env.WS_PROXY_HOST || "127.0.0.1";
+const PROXY_PORT = Number(process.env.WS_PROXY_PORT) || 7890;
 const SITE = "https://liitdoog.github.io/";
 const ACTIONS = "https://github.com/liitdoog/liitdoog.github.io/actions";
 
