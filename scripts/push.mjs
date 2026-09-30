@@ -27,12 +27,24 @@ function say(msg = "") {
   console.log(msg);
 }
 
-/** 跑一条 git 命令，返回 stdout（失败时抛错） */
+/** 跑一条 git 命令，返回 stdout；失败时把 git 自己的报错一起带出来 */
 function git(args, { quiet = true } = {}) {
-  return execFileSync("git", args, {
-    encoding: "utf-8",
-    stdio: quiet ? ["ignore", "pipe", "pipe"] : "inherit",
-  });
+  try {
+    return execFileSync("git", args, {
+      encoding: "utf-8",
+      stdio: quiet ? ["ignore", "pipe", "pipe"] : "inherit",
+    });
+  } catch (err) {
+    const detail = String(err.stderr || err.stdout || "").trim();
+    const wrapped = new Error(detail || err.message);
+    wrapped.status = err.status;
+    throw wrapped;
+  }
+}
+
+/** 工作区是否干净（没有未提交的改动） */
+function treeClean() {
+  return git(["status", "--porcelain"]).trim() === "";
 }
 
 /** 检查本地代理端口有没有在监听 */
@@ -91,7 +103,8 @@ async function main() {
   say("  [1/4] 代理正常");
 
   // ---- 2. 有没有改动 ----
-  const status = git(["status", "--porcelain"]).trim();
+  // core.quotepath=false：让 git 直接输出中文路径，而不是 \344\275\234 这种转义
+  const status = git(["-c", "core.quotepath=false", "status", "--porcelain"]).trim();
   if (!status) {
     say("");
     say("  [!] 没有任何改动，不需要推送。");
@@ -125,7 +138,11 @@ async function main() {
   try {
     git(["commit", "-F", msgFile]);
   } catch (err) {
-    await fail(`打包失败：${err.message}`);
+    // git 偶尔会在提交其实已经生成的情况下返回非零（例如只输出了一条警告），
+    // 所以先确认工作区到底干净没有，再决定是不是真的失败。
+    if (!treeClean()) {
+      await fail(`打包失败：\n      ${err.message.split("\n").join("\n      ")}`);
+    }
   } finally {
     fs.rmSync(msgFile, { force: true });
   }
@@ -134,16 +151,17 @@ async function main() {
   // ---- 4. 上传 ----
   say("  [4/4] 正在上传…");
   say("");
-  let pushOk = true;
+  let pushErr = null;
   try {
     git(["push"], { quiet: false });
-  } catch {
-    pushOk = false;
+  } catch (err) {
+    pushErr = err;
   }
 
-  if (!pushOk) {
+  if (pushErr) {
     say("");
     say("  [X] 上传失败。");
+    if (pushErr.message) say(`      ${pushErr.message.split("\n")[0]}`);
     say("      如果提示 connection / timeout，多半是代理断了，重新开一下再双击本文件。");
     say("");
     await hold();
