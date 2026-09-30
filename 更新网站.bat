@@ -1,8 +1,8 @@
 @echo off
-REM 一键更新网站 —— 真正的逻辑在 scripts\push.mjs
-REM 本文件必须保持纯 ASCII：cmd 用系统代码页读批处理文件，
-REM 一旦在 chcp 65001 之后出现中文行，cmd 会用旧代码页算出的偏移去读，
-REM 导致整行被从中间劈开当成命令执行。
+REM One-click site update. The real logic lives in scripts\push.mjs
+REM IMPORTANT: keep this file pure ASCII. cmd parses .bat files using the
+REM system codepage (936 here) while the file is UTF-8, so any non-ASCII
+REM byte shifts cmd's read offset and splits lines in half mid-command.
 chcp 65001 >nul
 cd /d "%~dp0"
 
